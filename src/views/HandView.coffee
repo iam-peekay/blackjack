@@ -1,3 +1,4 @@
+# Defines the main hanf view
 class window.HandView extends Backbone.View
   className: 'hand'
 
@@ -13,4 +14,3 @@ class window.HandView extends Backbone.View
     @$el.append @collection.map (card) ->
       new CardView(model: card).$el
     @$('.score').text @collection.scores()[0]
-

@@ -1,3 +1,4 @@
+# Defines the main app view
 class window.AppView extends Backbone.View
   template: _.template '
     <button class="hit-button">Hit</button> <button class="stand-button">Stand</button>
@@ -16,7 +17,6 @@ class window.AppView extends Backbone.View
     @model.get('gameModel').bind 'splitHand', @render
 
   render: ->
-    console.log 'I ran'
     @model.get('gameModel').set 'betAmount', parseInt(window.prompt 'How much would you like to bet? 10, 50, 100, or 500?', 10)
     @$el.children().detach()
     @$el.html @template()
@@ -24,4 +24,3 @@ class window.AppView extends Backbone.View
     for hand in test
       @$('.player-hand-container').append new HandView(collection: hand).el
     @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
-

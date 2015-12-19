@@ -1,3 +1,4 @@
+# Represents a single card.
 class window.Card extends Backbone.Model
   initialize: (params) ->
     @set
@@ -13,5 +14,3 @@ class window.Card extends Backbone.Model
 
   flip: ->
     @set 'revealed', !@get 'revealed'
-    @
-

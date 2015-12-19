@@ -1,11 +1,13 @@
+# This represents a single hand (either player or dealer)
+# Contains various helper functions to manipulate the hand
 class window.Hand extends Backbone.Collection
   model: Card
 
   initialize: (array, @deck, @isDealer) ->
     _.bindAll @
 
-    @checkForDups(array) 
-  
+    @checkForDups(array)
+
   hit: ->
     @add(@deck.pop())
     @trigger 'hit', @
@@ -25,9 +27,7 @@ class window.Hand extends Backbone.Collection
     # when there is an ace, it offers you two scores - the original score, and score + 10.
     [@minScore(), @minScore() + 10 * @hasAce()]
 
-  checkForDups: (array) ->  
+  checkForDups: (array) ->
     if array[0].get('value') is array[1].get('value') then @trigger 'split'
       # if window.confirm 'would you like to split?'
       #   splitHand = true
-       
-

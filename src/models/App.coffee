@@ -1,11 +1,12 @@
 # TODO: Refactor this model to use an internal Game Model instead
 # of containing the game logic directly.
+
+# Initializes the game. 
 class window.App extends Backbone.Model
   initialize: ->
     _.bindAll @
     @set 'deck', deck = new Deck()
     newPlayer = deck.dealPlayer()
-    console.log newPlayer
     newPlayerArr = []
     newPlayerArr.push newPlayer
     @set 'playerHands', newPlayerArr
@@ -19,7 +20,7 @@ class window.App extends Backbone.Model
     gameEnd = @get 'gameModel'
     gameEnd.bind 'gameEnd', @newGame
 
-  newGame: -> 
+  newGame: ->
     newPlayerOnGameEnd = @get('deck').dealPlayer()
     newDealerOnGameEnd = @get('deck').dealDealer()
     @set 'playerHands', [newPlayerOnGameEnd]
